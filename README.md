@@ -1,9 +1,11 @@
 # node\_express\_skeleton
+
 This creates a simple MVC skelton for node.js servers on top of express and pug (formerly called jade).
 
 index.js does all of the setup automatically which should serve most cases. It can be edited to change anything as desired (for example, adding support for POST requests, since the default is to make everything a GET request).
 
 ### Controllers and Routes
+
 All routes (URLs that may be called) are defined by controllers. It's very simple to add custom routes using your own controllers.
 
 To create a controller, simply add a file to the path `server/controllers/my\_controller.js`. Note that the file *must* be in the `server/controllers` folder, and *must* end with `_controller.js` as a suffix. If both are true, the file will be recognized as a controller and will be imported and scanned for routes.
@@ -60,24 +62,29 @@ To add routes to a controller, you must set `module.exports` to be an object wit
     };
 
 ###Models
+
 Models are typically connected with database entries. They're not strictly speaking required to make anything work. To have good MVC, you should put all yours business into models and you should put them at the path `server/models/my\_model.js`. However, this is not required – there is nothing special about models in this skeleton.
 
 For a good database-connected pattern, check out `server/models/test\_model.js`.
 
 ###Views
+
 Views represent anything that gets rendered out to the user. In this skeleton, they are all pug files, but you could use any view engine you like (just make sure to edit `page\_controller.js` if you do so). The page controller will automatically browse through all pug files located in the `views` folder and connect them to controller functions. So, to browse to `views/test.pug` you need only navigate to `mySite.com/test`, as long as you keep the page controller in your project and don't change the defaultControllerName in index.js.
 
 Using all the usual pug / express rules and conventions, you can send parameters and data to your pug file in order to dynamically render content.
 
 ###redis database
+
 For the skeleton app, a redis database is included but not hooked up. The test model *does* use the database. Redis is conventient for quick prototyping and simple servers, but a better long-term option would be to hook up SQL or similar.
 
 Within the file `server/database.js` is a wrapper for redis use. You can start building your app using this, then if you switch to a different sort of db you can simply edit the contents of database.js to make that work.
 
 ###public folder
+
 Everything that lives in the `public` folder is accessible by the client, and is considered the root directory when it comes to including js and css files. This can be changed in the `configServer()` function in `index.js`.
 
 ###debug.pug, routes.js, and routeTester.js
+
 `debug.pug` is an endpoint you can use to access and control debug functionality. It uses the public JS files `routes.js` and `routeTester.js` to make a simple debug panel that allows you to directly call endpoints available in your app. Currently, `routes.js` must be built manually to allow any routes you care to test. In the future, it may be worth implementing a startup node function that automatically populates this file based upon all available routes – but that also could create security risks.
 
 Simply delete this file if you do not want this functionality.
