@@ -4,6 +4,8 @@ This creates a simple MVC skelton for node.js servers on top of express and pug 
 
 index.js does all of the setup automatically which should serve most cases. It can be edited to change anything as desired (for example, adding support for POST requests, since the default is to make everything a GET request).
 
+If you want to use this skeleton, feel free to fork the project, duplicate and edit it, whatever. Please include a link to the original project: https://github.com/eli-lumos/node_express_skeleton somewhere.
+
 ### Controllers and Routes
 
 All routes (URLs that may be called) are defined by controllers. It's very simple to add custom routes using your own controllers.
