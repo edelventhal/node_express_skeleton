@@ -1,0 +1,12 @@
+html
+    head
+        title Node Express Skeleton
+        script(src="js/cookies.js")
+        script(src="js/server.js")
+        script(src="js/test.js")
+        link(rel="stylesheet" href="css/styles.css")
+body
+    p= 'If this is running, then your skeleton should be working! Also, check out the custom data: ' + customData.foo
+    button(type='button' onClick='test.testMyRoute()') Test 'myRoute'
+    button(type='button' onClick='test.testUseParameter()') Test 'useParameter'
+    div(id='result')
