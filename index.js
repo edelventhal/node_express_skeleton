@@ -60,8 +60,12 @@ var Server = module.exports.Server =
                 {
                     prefix = "";
                 }
+                else
+                {
+                    prefix = "/" + prefix;
+                }
                 
-                this._addRoutes( this._getRoutes( controller, "/" + prefix ), "get" );
+                this._addRoutes( this._getRoutes( controller, prefix ), "get" );
                 
                 if ( file === this.defaultControllerName + "_controller.js" )
                 {

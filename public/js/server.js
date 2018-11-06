@@ -6,7 +6,7 @@
 //see the testMyRoute and testUseParameter examples below.
 var server =
 {
-    _sendRequest: function( url, params, cb )
+    _sendRequest: function( url, cb, params )
     {
         var fullUrl = url;
         
@@ -33,31 +33,42 @@ var server =
         }
         
         var oReq = new XMLHttpRequest();
-        oReq.addEventListener("load", this._loadResponse.bind( this, oReq, cb ) );
+        oReq.addEventListener("load", this._loadResponse.bind( this, oReq, fullUrl, cb ) );
         oReq.addEventListener("error", this._loadError.bind( this, oReq, fullUrl, cb ) );
         oReq.open("GET", fullUrl );
         oReq.send();
     },
     
-    _loadResponse: function( oReq, cb )
+    _loadResponse: function( oReq, url, cb )
     {
-        //TODO - add in error handling and bad statuses and whatnot
-        cb( JSON.parse( oReq.responseText ) );
+        if ( oReq.status !== 200 )
+        {
+            this._loadError( oReq, url, cb );
+        }
+        else
+        {
+            cb( JSON.parse( oReq.responseText ) );
+        }
     },
     
     _loadError: function( oReq, url, cb )
     {
-        alert( "Failed to load URL: " + url + ".\n" + oReq.responseText );
+        alert( "Failed to load URL: " + url + ". Error " + oReq.status + ".\n" + oReq.responseText );
         cb();
     },
     
     testMyRoute: function( cb )
     {
-        this._sendRequest( "test/myRoute", { username: username }, cb );
+        this._sendRequest( "test/myRoute", cb );
     },
     
     testUseParameter: function( idParam, cb )
     {
-        this._sendRequest( "test/useParameter", { id: idParam }, cb );
+        this._sendRequest( "test/useParameter", cb, { id: idParam } );
+    },
+    
+    testInvalidRoute: function( cb )
+    {
+        this._sendRequest( "test/invalid", cb );
     }
 };

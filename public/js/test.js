@@ -10,6 +10,11 @@ var test =
         server.testUseParameter( 0, this._showResult );
     },
     
+    testInvalidRoute: function()
+    {
+        server.testInvalidRoute( this._showResult );
+    },
+    
     _showResult: function( result )
     {
         var resultStr = result;

@@ -4,11 +4,10 @@
 
 var routes =
 {
-    "user/get": { params: [ "username" ], color: "#33cc33", backgroundColor: "#99ff99" },
-    "user/reset": { params: [ "username" ], color: "#cc3333", backgroundColor: "#ff9999", showWarning: true },
-    "user/heartbeat": { params: [ "username" ] },
-    "user/game/play": { params: [ "username", "gameId" ] },
-    "global/feature": { params: ["gameId"] },
+    "test/myRoute": { color: "#33cc33", backgroundColor: "#99ff99" },
+    "test/timeout": { color: "#cc3333", backgroundColor: "#ff9999", showWarning: true },
+    "test/useParameter": { params: [ "id" ] },
+    "test/sub/myRoute": { color: "#33cc33", backgroundColor: "#99ff99" },
     "database/get" : { params: [ "key" ] },
     "database/set" : { params: [ "key", "value" ], color: "#cc3333", backgroundColor: "#ff9999", showWarning: true },
     "database/clear" : { params: [], color: "#cc3333", backgroundColor: "#ff9999", showWarning: true },
