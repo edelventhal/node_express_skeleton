@@ -9,6 +9,7 @@ var express = require( "express" );
 var app = express();
 var http = require( "http" ).createServer( app );
 var fs = require( "fs" );
+var walkSync = require( "walk-sync" );
 var port = process.env.PORT || 15000;
 
 //call this to do everything
@@ -50,7 +51,7 @@ var Server = module.exports.Server =
         var controllerLocation = "./server/controllers";
         var suffix = "_controller.js";
         var defaultController = null;
-        fs.readdirSync( controllerLocation ).forEach( function( file )
+        walkSync( controllerLocation ).forEach( function( file )
         {
             if ( file.substr( -1 * suffix.length ) === suffix )
             {
